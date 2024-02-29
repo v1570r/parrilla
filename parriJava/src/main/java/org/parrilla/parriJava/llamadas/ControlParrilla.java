@@ -2,8 +2,8 @@ package org.parrilla.parriJava.llamadas;
 
 import org.parrilla.parriJava.basededatos.AlmacenParrilla;
 import org.parrilla.parriJava.basededatos.TablaParrilla;
+import org.parrilla.parriJava.modulador.BaseDatosADTO;
 import org.parrilla.parriJava.validacion.ParrillaDTO;
-import org.parrilla.parriJava.validacion.VideoDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,20 +19,6 @@ public class ControlParrilla {
 
     public ControlParrilla(AlmacenParrilla almacenParrilla) {
         this.almacen_parrilla = almacenParrilla;
-    }
-
-    private ParrillaDTO annadirMensaje(ParrillaDTO parrillaDTO, List<TablaParrilla> tablaParrilla){
-        for (int i = 0; i < tablaParrilla.size(); i++){
-            TablaParrilla fila = tablaParrilla.get(i);
-            parrillaDTO.parrilla().add(
-                    new VideoDTO(
-                            fila.getMomento(),
-                            fila.getIdentificador_video(),
-                            fila.getMiniatura()
-                    )
-            );
-        }
-        return parrillaDTO;
     }
 
     @GetMapping("/parrilla")
@@ -55,7 +41,7 @@ public class ControlParrilla {
 
         ParrillaDTO parrillaDTO = new ParrillaDTO(new ArrayList<>());
 
-        return annadirMensaje(
+        return BaseDatosADTO.annadirMensajeAParrillaDTODesdeTablaParrilla(
                 parrillaDTO,
                 tabla_parrilla
         );

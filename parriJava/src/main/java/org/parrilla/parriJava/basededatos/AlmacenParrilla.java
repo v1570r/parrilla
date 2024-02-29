@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface AlmacenParrilla extends JpaRepository<TablaParrilla, Long> {
     List<TablaParrilla> findByMomentoBetweenOrderByMomentoAsc(LocalDateTime startMomento, LocalDateTime endMomento);
+
+    List<TablaParrilla> findByMomentoGreaterThanEqualOrderByMomentoAsc(LocalDateTime startMomento);
 }
