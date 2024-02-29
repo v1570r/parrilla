@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Bases de Datos ###
+base_de_datos_parrillada.db
