@@ -217,7 +217,7 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 > | Código HTTP | Tipo de contenido         | Respuesta                                    |
 > |-------------|---------------------------|----------------------------------------------|
 > |    `201`    | ` `                       | ninguna                                      |
-> |    `400`    | `text/json;charset=UTF-8` | `{"código":"400","mensaje":"Mala petición"}` |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición"}` |
 
 
 
@@ -259,8 +259,8 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 > | Código HTTP | Tipo de contenido         | Respuesta                                              |
 > |-------------|---------------------------|--------------------------------------------------------|
 > |    `200`    | ` `                       | texto JSON                                             |
-> |    `400`    | `text/json;charset=UTF-8` | `{"código":"400","mensaje":"Mala petición."}`          |
-> |    `404`    | `text/json;charset=UTF-8` | `{"código":"404","mensaje":"Programa no encontrado."}` |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición."}`          |
+> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Programa no encontrado."}` |
 
 ##### Respuesta 200
 
@@ -309,8 +309,8 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 > | Código HTTP | Tipo de contenido         | Respuesta                                              |
 > |-------------|---------------------------|--------------------------------------------------------|
 > |    `200`    | ` `                       | texto JSON                                             |
-> |    `400`    | `text/json;charset=UTF-8` | `{"código":"400","mensaje":"Mala petición."}`          |
-> |    `404`    | `text/json;charset=UTF-8` | `{"código":"404","mensaje":"Programa no encontrado."}` |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición."}`          |
+> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Programa no encontrado."}` |
 
 ##### Respuesta 200
 
@@ -361,8 +361,8 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 > | Código HTTP | Tipo de contenido         | Respuesta                                              |
 > |-------------|---------------------------|--------------------------------------------------------|
 > |    `200`    | ` `                       | texto JSON                                             |
-> |    `400`    | `text/json;charset=UTF-8` | `{"código":"400","mensaje":"Mala petición."}`          |
-> |    `404`    | `text/json;charset=UTF-8` | `{"código":"404","mensaje":"Programa no encontrado."}` |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición."}`          |
+> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Programa no encontrado."}` |
 
 ##### Respuesta 200
 
@@ -411,8 +411,8 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 > | Código HTTP | Tipo de contenido         | Respuesta                                              |
 > |-------------|---------------------------|--------------------------------------------------------|
 > |    `200`    | ` `                       | texto JSON                                             |
-> |    `400`    | `text/json;charset=UTF-8` | `{"código":"400","mensaje":"Mala petición."}`          |
-> |    `404`    | `text/json;charset=UTF-8` | `{"código":"404","mensaje":"Programa no encontrado."}` |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición."}`          |
+> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Programa no encontrado."}` |
 
 ##### Respuesta 200
 
