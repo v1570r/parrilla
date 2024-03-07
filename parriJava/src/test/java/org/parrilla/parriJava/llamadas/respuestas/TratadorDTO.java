@@ -17,4 +17,11 @@ public class TratadorDTO {
         String respuesta_en_json = conversor.writeValueAsString(objeto);
         return content().json(respuesta_en_json);
     }
+
+    public static String ObjectACadenaDeCaracteres(Object objeto) throws JsonProcessingException {
+        ObjectMapper conversor = new ObjectMapper();
+        conversor.registerModule(new JavaTimeModule());
+        conversor.setDateFormat(new SimpleDateFormat());
+        return conversor.writeValueAsString(objeto);
+    }
 }
