@@ -89,11 +89,11 @@ public class ControlObtenerProgramaTest {
     @Test
     void llamandoAProgramaIdConIdentificadorInexistenteDevolviendoMalaSolicitud() throws Exception {
         llamada_interna.perform(MockMvcRequestBuilders.get("/programa/9999"))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isNotFound())
                 .andExpect(
                         TratadorDTO.ObjectAResultMatcher(
                                 new FalloDTO(
-                                        400,
+                                        404,
                                         "Solicitud incorrecta: Identificador inexistente."
                                 )
                         )

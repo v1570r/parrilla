@@ -67,12 +67,12 @@ public class AlertaMalaSolicitud {
         );
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
     @ExceptionHandler(NoSuchElementException.class)
     public FalloDTO alertaMensajeNoLegible(NoSuchElementException fallo_mensaje) {
         return new FalloDTO(
-                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.NOT_FOUND.value(),
                 TEXTO_SOLICITUD_INCORECTA + "Identificador inexistente."
         );
     }
