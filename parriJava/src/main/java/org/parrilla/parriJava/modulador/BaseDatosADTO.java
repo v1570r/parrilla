@@ -26,13 +26,16 @@ public class BaseDatosADTO {
     }
 
     public static ProgramaDTO transformarAProgramaDTODesdeTablaCalendario(TablaCalendario programa){
-        ArrayList<DiaDeLaSemanaDTO> dias_de_la_semana = new ArrayList<>();
-        String vector_dias_de_la_semana = programa.getDias_de_la_semana().substring(
-                1,
-                programa.getDias_de_la_semana().length() - 1
-        );
-        for( String dia_de_la_semana : vector_dias_de_la_semana.split(", ") ){
-            dias_de_la_semana.add(DiaDeLaSemanaDTO.valueOf(dia_de_la_semana));
+        ArrayList<DiaDeLaSemanaDTO> dias_de_la_semana = null;
+        if(null != programa.getDias_de_la_semana()) {
+            dias_de_la_semana = new ArrayList<>();
+            String vector_dias_de_la_semana = programa.getDias_de_la_semana().substring(
+                    1,
+                    programa.getDias_de_la_semana().length() - 1
+            );
+            for (String dia_de_la_semana : vector_dias_de_la_semana.split(", ")) {
+                dias_de_la_semana.add(DiaDeLaSemanaDTO.valueOf(dia_de_la_semana));
+            }
         }
         return new ProgramaDTO(
                 programa.getMomento_inicial(),

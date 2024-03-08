@@ -48,7 +48,11 @@ public class ControlAnnadirProgramaTest {
     @DisplayName("Llamando a /programa para crear un nuevo programa con datos mínimos devolviendo Creado.")
     @Test
     void llamandoAProgramaParaCrearUnNuevoProgramaConDatosMinimosDevolviendoCreado() throws Exception {
-        Integer identificador_ultimo_programa_esperado = Long.signum(almacen_calendario.count()) + 1;
+        List<TablaCalendario> tabla_calendarios_inicial = almacen_calendario.findAll();
+        TablaCalendario ultimo_programa_inicial = tabla_calendarios_inicial.get(
+                tabla_calendarios_inicial.size() - 1
+        );
+        Integer identificador_ultimo_programa_esperado = ultimo_programa_inicial.getId() + 1;
         ProgramaDTO solicitud = new ProgramaDTO(
                 LocalDateTime.of(2000,2,29,16,43),
                 null,
@@ -159,7 +163,11 @@ public class ControlAnnadirProgramaTest {
     @DisplayName("Llamando a /programa para crear un nuevo programa con datos completos devolviendo Creado.")
     @Test
     void llamandoAProgramaParaCrearUnNuevoProgramaConDatosCompletosDevolviendoCreado() throws Exception {
-        Integer identificador_ultimo_programa_esperado = Long.signum(almacen_calendario.count()) + 1;
+        List<TablaCalendario> tabla_calendarios_inicial = almacen_calendario.findAll();
+        TablaCalendario ultimo_programa_inicial = tabla_calendarios_inicial.get(
+                tabla_calendarios_inicial.size() - 1
+        );
+        Integer identificador_ultimo_programa_esperado = ultimo_programa_inicial.getId() + 1;
 
         ArrayList<String> identificadores_de_lista = new ArrayList<>();
         identificadores_de_lista.add("https://www.youtube.com/watch?list=PL9hW1uS6HUfva3BDhnfnGBOBkvl3Q1WGw");

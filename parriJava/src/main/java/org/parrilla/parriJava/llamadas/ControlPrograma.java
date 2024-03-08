@@ -68,4 +68,17 @@ public class ControlPrograma {
                         .get()
         );
     }
+
+    @DeleteMapping("/programa/{identificador}")
+    public ProgramaDTO eliminarPrograma(
+            @Valid
+            @NotNull
+            @PathVariable
+            @Positive
+            Long identificador
+    ){
+        ProgramaDTO elemento_a_borrar = obtenerPrograma(identificador);
+        almacen_calendario.deleteById(identificador);
+        return elemento_a_borrar;
+    }
 }
