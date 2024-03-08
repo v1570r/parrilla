@@ -15,6 +15,7 @@ import org.springframework.web.method.annotation.HandlerMethodValidationExceptio
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @ControllerAdvice
 public class AlertaMalaSolicitud {
@@ -63,6 +64,16 @@ public class AlertaMalaSolicitud {
         return new FalloDTO(
                 HttpStatus.BAD_REQUEST.value(),
                 TEXTO_SOLICITUD_INCORECTA + "no se recibió el cuerpo."
+        );
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    @ExceptionHandler(NoSuchElementException.class)
+    public FalloDTO alertaMensajeNoLegible(NoSuchElementException fallo_mensaje) {
+        return new FalloDTO(
+                HttpStatus.BAD_REQUEST.value(),
+                TEXTO_SOLICITUD_INCORECTA + "Identificador inexistente."
         );
     }
 }
