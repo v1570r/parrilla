@@ -2,14 +2,13 @@ package org.parrilla.parriJava.llamadas;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.parrilla.parriJava.basededatos.AlmacenCalendario;
 import org.parrilla.parriJava.basededatos.TablaCalendario;
+import org.parrilla.parriJava.modulador.BaseDatosADTO;
 import org.parrilla.parriJava.validacion.ProgramaDTO;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ControlPrograma {
@@ -53,5 +52,20 @@ public class ControlPrograma {
         nuevo_programa.setExcepciones(programaDTO.excepciones());
         nuevo_programa.setOmitidos(programaDTO.omitidos());
         almacen_calendario.save(nuevo_programa);
+    }
+
+    @GetMapping("/programa/{identificador}")
+    public ProgramaDTO obtenerPrograma(
+            @Valid
+            @NotNull
+            @PathVariable
+            @Positive
+            Long identificador
+    ){
+        return BaseDatosADTO.transformarAProgramaDTODesdeTablaCalendario(
+                almacen_calendario
+                        .findById(identificador)
+                        .get()
+        );
     }
 }
