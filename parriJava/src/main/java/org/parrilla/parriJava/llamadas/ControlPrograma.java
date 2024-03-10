@@ -81,4 +81,60 @@ public class ControlPrograma {
         almacen_calendario.deleteById(identificador);
         return elemento_a_borrar;
     }
+
+    @PostMapping("/programa/{identificador}")
+    public ProgramaDTO editarPrograma(
+            @Valid
+            @NotNull
+            @PathVariable
+            @Positive
+            Long identificador,
+            @Valid
+            @NotNull
+            @RequestBody
+            ProgramaDTO programaDTO
+    ){
+        TablaCalendario programa_a_editar = almacen_calendario
+                .findById(identificador)
+                .get();
+        ProgramaDTO programa_a_devolver = BaseDatosADTO.transformarAProgramaDTODesdeTablaCalendario(programa_a_editar);
+
+        programa_a_editar.setMomento_inicial(programaDTO.momento_inicial());
+        programa_a_editar.setIdentificador_video(programaDTO.identificador_video());
+        programa_a_editar.setIdentificadores_de_lista(programaDTO.identificadores_de_lista());
+        programa_a_editar.setIdentificadores_de_canal(programaDTO.identificadores_de_canal());
+        if( null != programaDTO.orden() ) {
+            programa_a_editar.setOrden(programaDTO.orden().getOrden());
+        } else {
+            programa_a_editar.setOrden(null);
+        }
+        if( null != programaDTO.repetir() ){
+            programa_a_editar.setRepetir(programaDTO.repetir().getRepeticion());
+        } else {
+            programa_a_editar.setRepetir(null);
+        }
+        programa_a_editar.setRepetir_cada(programaDTO.repetir_cada());
+        if( null != programaDTO.dias_de_la_semana() ){
+            programa_a_editar.setDias_de_la_semana(programaDTO.dias_de_la_semana().toString());
+        } else {
+            programa_a_editar.setDias_de_la_semana(null);
+        }
+        if( null != programaDTO.coincidencia() ){
+            programa_a_editar.setCoincidencia(programaDTO.coincidencia().getCoincidencia());
+        } else {
+            programa_a_editar.setCoincidencia(null);
+        }
+        if( null != programaDTO.duracion() ){
+            programa_a_editar.setDuracion(programaDTO.duracion().getDuracion());
+        } else {
+            programa_a_editar.setDuracion(null);
+        }
+        programa_a_editar.setNumero_de_repeticiones(programaDTO.numero_de_repeticiones());
+        programa_a_editar.setCaducidad(programaDTO.caducidad());
+        programa_a_editar.setExcepciones(programaDTO.excepciones());
+        programa_a_editar.setOmitidos(programaDTO.omitidos());
+        almacen_calendario.save(programa_a_editar);
+
+        return programa_a_devolver;
+    }
 }
