@@ -1,6 +1,7 @@
 # Parrilla de programación televisiva.
 
-La aplicación consisite en un servicio de obtención de vídeos ordenados de tal folrma que se asemeje a una televisión. Junto con ello ofrece búsqueda y asignación de vídeos automáticamente a la parrilla televisiva de YouTube.
+La aplicación consisite en un servicio de obtención de vídeos ordenados asemejandose a una televisión.
+Junto con ello ofrece búsqueda y asignación de vídeos automáticamente a la parrilla televisiva de YouTube.
 
 # Recursos
 
@@ -15,12 +16,12 @@ La aplicación consisite en un servicio de obtención de vídeos ordenados de ta
 
 #### Parámetros
 
-> Ninguno  
+> Ninguno
 
 #### Códigos de respuesta
 
-> | Código HTTP | Tipo de contenido          | Respuesta  |
-> |-------------|----------------------------|------------|
+> | Código HTTP | Tipo de contenido         | Respuesta  |
+> |-------------|---------------------------|------------|
 > |    `200`    | `text/json;charset=UTF-8` | texto JSON |
 
 ##### Respuesta 200
@@ -58,8 +59,8 @@ La aplicación consisite en un servicio de obtención de vídeos ordenados de ta
 
 #### Códigos de respuesta
 
-> | Código HTTP | Tipo de contenido          | Respuesta  |
-> |-------------|----------------------------|------------|
+> | Código HTTP | Tipo de contenido         | Respuesta  |
+> |-------------|---------------------------|------------|
 > |    `200`    | `text/json;charset=UTF-8` | texto JSON |
 
 ##### Respuesta 200
@@ -102,8 +103,8 @@ La aplicación consisite en un servicio de obtención de vídeos ordenados de ta
 
 #### Códigos de respuesta
 
-> | Código HTTP | Tipo de contenido          | Respuesta  |
-> |-------------|----------------------------|------------|
+> | Código HTTP | Tipo de contenido         | Respuesta  |
+> |-------------|---------------------------|------------|
 > |    `200`    | `text/json;charset=UTF-8` | texto JSON | 
 
 ##### Respuesta 200
@@ -128,10 +129,10 @@ La aplicación consisite en un servicio de obtención de vídeos ordenados de ta
       "repetir": "NUNCA",
       "repetir_cada": 0,
       "dias_de_la_semana": [
-        "L",
-        "X",
-        "V",
-        "S"
+        "LUNES",
+        "MIERCOLES",
+        "VIERNES",
+        "SABADO"
       ],
       "coincidencia": "NUMERICA",
       "duracion": "SIEMPRE",
@@ -159,10 +160,10 @@ La aplicación consisite en un servicio de obtención de vídeos ordenados de ta
       "repetir": "NUNCA",
       "repetir_cada": 0,
       "dias_de_la_semana": [
-        "L",
-        "X",
-        "V",
-        "S"
+        "LUNES",
+        "MIERCOLES",
+        "VIERNES",
+        "SABADO"
       ],
       "coincidencia": "NUMERICA",
       "duracion": "SIEMPRE",
@@ -195,29 +196,29 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 
 #### Parámetros
 
-> | Nombre                     | Requisito   | Tipo de dato        | Descripcion                                                                                                                                                                                                                                                     |
-> |----------------------------|-------------|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | `momento_inicial`          | obligatorio | fecha               | Primer instante de emision del que a partir se repetirá. Formato `yyyy-MM-ddThh:mm:ss`.                                                                                                                                                                         |
-> | `identificador_video`      | opcional    | enlace              | Enlace del vídeo a programar. Activada esta opción, se anulan el resto de opciones de identificadores, búsqueda y orden.                                                                                                                                        |
-> | `identificadores_de_lista` | opcional    | lista de enlaces    | Lista de enlaces de listas de vídeos a programar.                                                                                                                                                                                                               |
-> | `identificadores_de_canal` | opcional    | lista de enlaces    | Lista de enlaces de listas de canales a programar.                                                                                                                                                                                                              |
-> | `orden`                    | opcional    | texto               | Establece el orden del listado de videos, siendo por defecto DESCENDENTE. Solo admite: ASCENDENTE; DESCENDENTE.                                                                                                                                                 |
-> | `repetir`                  | opcional    | texto               | Establece el tipo de repetición de la programación, siendo por defecto NUNCA. Solo admite: NUNCA; DIARIAMENTE; SEMANALMENTE; MENSUALMENTE; ANUALMENTE.                                                                                                          |
-> | `repetir_cada`             | opcional    | entero              | Indica cada cuanto tiempo se repite diariamente, semanalmente, mensualmente o anualmente.                                                                                                                                                                       |
-> | `dias_de_la_semana`        | opcional    | lista de caractéres | Indica los días de la semana que se programa el vídeo. Se emplea la forma abreviada de los días de la semana en mayúsculas: L (lunes); M (martes); X (miércoles); J (jueves); V (viernes); S (sábado); D (domingo). Solo es válido con repetición SEMANALMENTE. |
-> | `coincidencia`             | opcional    | texto               | Establece el tipo de coincidencia del día de repetición de la programación, siendo por defecto NUMERICA. Solo admite: NUMERICA; SEMANAL; ULTIMA_SEMANAL; ULTIMO_MENSUAL. Solo es válido con repetición MENSUALMENTE.                                            |
-> | `duracion`                 | opcional    | texto               | Establece cuando finaliza la programación, siendo por defecto SIEMPRE. Solo admite: SIEMPRE; REPETICION; CADUCA.                                                                                                                                                |
-> | `numero_de_repeticiones`   | opcional    | entero              | Establece el número de repeticiones con los cuales finaliza la programación. Solo es válido con duracion REPETICION.                                                                                                                                            |
-> | `caducidad`                | opcional    | fecha               | Establece la fecha de caducidad de la programación. Solo es válido con duracion CADUCA.                                                                                                                                                                         |
-> | `excepciones`              | opcional    | lista de días       | Días los cuales no se aplicará la programación en la parrilla.                                                                                                                                                                                                  |
-> | `omitidos`                 | opcional    | lista de enlaces    | Lista de vídeos que se omiten a incluir en la parrilla.                                                                                                                                                                                                         |
+> | Nombre                     | Requisito   | Tipo de dato              | Descripcion                                                                                                                                                                                                                                        |
+> |----------------------------|-------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> | `momento_inicial`          | obligatorio | fecha                     | Primer instante de emision del que a partir se repetirá. Formato `yyyy-MM-ddThh:mm:ss`.                                                                                                                                                            |
+> | `identificador_video`      | opcional    | enlace                    | Enlace del vídeo a programar. Activada esta opción, se anulan el resto de opciones de identificadores, búsqueda y orden.                                                                                                                           |
+> | `identificadores_de_lista` | opcional    | lista de enlaces          | Lista de enlaces de listas de vídeos a programar.                                                                                                                                                                                                  |
+> | `identificadores_de_canal` | opcional    | lista de enlaces          | Lista de enlaces de listas de canales a programar.                                                                                                                                                                                                 |
+> | `orden`                    | opcional    | texto                     | Establece el orden del listado de videos, siendo por defecto `DESCENDENTE`. Solo admite: `ASCENDENTE`; `DESCENDENTE`.                                                                                                                              |
+> | `repetir`                  | opcional    | texto                     | Establece el tipo de repetición de la programación, siendo por defecto `NUNCA`. Solo admite: `NUNCA`; `DIARIAMENTE`; `SEMANALMENTE`; `MENSUALMENTE`; `ANUALMENTE`.                                                                                 |
+> | `repetir_cada`             | opcional    | entero                    | Indica cada cuanto tiempo se repite diariamente, semanalmente, mensualmente o anualmente.                                                                                                                                                          |
+> | `dias_de_la_semana`        | opcional    | listado días de la semana | Indica los días de la semana que se programa el vídeo. Se emplea la forma abreviada de los días de la semana en mayúsculas: `LUNES`; `MARTES`; `MIERCOLES`; `JUEVES`; `VIERNES`; `SABADO`; `DOMINGO`. Solo es válido con repetición `SEMANALMENTE`.|
+> | `coincidencia`             | opcional    | texto                     | Establece el tipo de coincidencia del día de repetición de la programación, siendo por defecto `NUMERICA`. Solo admite: `NUMERICA`; `SEMANA`; `ULTIMA_SEMANAL`; `ULTIMO_MENSUAL`. Solo es válido con repetición `MENSUALMENTE`.                    |
+> | `duracion`                 | opcional    | texto                     | Establece cuando finaliza la programación, siendo por defecto `SIEMPRE`. Solo admite: `SIEMPRE`; `REPETICION`; `CADUCA`.                                                                                                                           |
+> | `numero_de_repeticiones`   | opcional    | entero                    | Establece el número de repeticiones con los cuales finaliza la programación. Solo es válido con duracion `REPETICION`.                                                                                                                             |
+> | `caducidad`                | opcional    | fecha                     | Establece la fecha de caducidad de la programación. Solo es válido con duracion `CADUCA`.                                                                                                                                                          |
+> | `excepciones`              | opcional    | lista de días             | Días los cuales no se aplicará la programación en la parrilla.                                                                                                                                                                                     |
+> | `omitidos`                 | opcional    | lista de enlaces          | Lista de vídeos que se omiten a incluir en la parrilla.                                                                                                                                                                                            |
 
 #### Códigos de respuesta
 
-> | Código HTTP | Tipo de contenido         | Respuesta                                    |
-> |-------------|---------------------------|----------------------------------------------|
-> |    `201`    | ` `                       | ninguna                                      |
-> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición"}` |
+> | Código HTTP | Tipo de contenido         | Respuesta                                                           |
+> |-------------|---------------------------|---------------------------------------------------------------------|
+> |    `201`    | ` `                       | ninguna                                                             |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Solicitud incorrecta: Mala petición."}` |
 
 
 
@@ -236,30 +237,30 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 
 #### Parámetros
 
-> | Nombre                     | Requisito   | Tipo de dato        | Descripcion                                                                                                                                                                                                                                                     |
-> |----------------------------|-------------|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | `momento_inicial`          | obligatorio | fecha               | Primer instante de emision del que a partir se repetirá. Formato `yyyy-MM-ddThh:mm:ss`.                                                                                                                                                                         |
-> | `identificador_video`      | opcional    | enlace              | Enlace del vídeo a programar. Activada esta opción, se anulan el resto de opciones de identificadores, búsqueda y orden.                                                                                                                                        |
-> | `identificadores_de_lista` | opcional    | lista de enlaces    | Lista de enlaces de listas de vídeos a programar.                                                                                                                                                                                                               |
-> | `identificadores_de_canal` | opcional    | lista de enlaces    | Lista de enlaces de listas de canales a programar.                                                                                                                                                                                                              |
-> | `orden`                    | opcional    | texto               | Establece el orden del listado de videos, siendo por defecto DESCENDENTE. Solo admite: ASCENDENTE; DESCENDENTE.                                                                                                                                                 |
-> | `repetir`                  | opcional    | texto               | Establece el tipo de repetición de la programación, siendo por defecto NUNCA. Solo admite: NUNCA; DIARIAMENTE; SEMANALMENTE; MENSUALMENTE; ANUALMENTE.                                                                                                          |
-> | `repetir_cada`             | opcional    | entero              | Indica cada cuanto tiempo se repite diariamente, semanalmente, mensualmente o anualmente.                                                                                                                                                                       |
-> | `dias_de_la_semana`        | opcional    | lista de caractéres | Indica los días de la semana que se programa el vídeo. Se emplea la forma abreviada de los días de la semana en mayúsculas: L (lunes); M (martes); X (miércoles); J (jueves); V (viernes); S (sábado); D (domingo). Solo es válido con repetición SEMANALMENTE. |
-> | `coincidencia`             | opcional    | texto               | Establece el tipo de coincidencia del día de repetición de la programación, siendo por defecto NUMERICA. Solo admite: NUMERICA; SEMANAL; ULTIMA_SEMANAL; ULTIMO_MENSUAL. Solo es válido con repetición MENSUALMENTE.                                            |
-> | `duracion`                 | opcional    | texto               | Establece cuando finaliza la programación, siendo por defecto SIEMPRE. Solo admite: SIEMPRE; REPETICION; CADUCA.                                                                                                                                                |
-> | `repeticiones`             | opcional    | entero              | Establece el número de repeticiones con los cuales finaliza la programación. Solo es válido con duracion REPETICION.                                                                                                                                            |
-> | `caducidad`                | opcional    | fecha               | Establece la fecha de caducidad de la programación. Solo es válido con duracion CADUCA.                                                                                                                                                                         |
-> | `excepciones`              | opcional    | lista de días       | Días los cuales no se aplicará la programación en la parrilla.                                                                                                                                                                                                  |
-> | `omitidos`                 | opcional    | lista de enlaces    | Lista de vídeos que se omiten a incluir en la parrilla.                                                                                                                                                                                                         |
+> | Nombre                     | Requisito   | Tipo de dato              | Descripcion                                                                                                                                                                                                                                          |
+> |----------------------------|-------------|---------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> | `momento_inicial`          | obligatorio | fecha                     | Primer instante de emision del que a partir se repetirá. Formato `yyyy-MM-ddThh:mm:ss`.                                                                                                                                                              |
+> | `identificador_video`      | opcional    | enlace                    | Enlace del vídeo a programar. Activada esta opción, se anulan el resto de opciones de identificadores, búsqueda y orden.                                                                                                                             |
+> | `identificadores_de_lista` | opcional    | lista de enlaces          | Lista de enlaces de listas de vídeos a programar.                                                                                                                                                                                                    |
+> | `identificadores_de_canal` | opcional    | lista de enlaces          | Lista de enlaces de listas de canales a programar.                                                                                                                                                                                                   |
+> | `orden`                    | opcional    | texto                     | Establece el orden del listado de videos, siendo por defecto `DESCENDENTE`. Solo admite: `ASCENDENTE`; `DESCENDENTE`.                                                                                                                                |
+> | `repetir`                  | opcional    | texto                     | Establece el tipo de repetición de la programación, siendo por defecto `NUNCA`. Solo admite: `NUNCA`; `DIARIAMENTE`; `SEMANALMENTE`; `MENSUALMENTE`; `ANUALMENTE`.                                                                                   |
+> | `repetir_cada`             | opcional    | entero                    | Indica cada cuanto tiempo se repite diariamente, semanalmente, mensualmente o anualmente.                                                                                                                                                            |
+> | `dias_de_la_semana`        | opcional    | listado días de la semana | Indica los días de la semana que se programa el vídeo. Se emplea la forma abreviada de los días de la semana en mayúsculas: `LUNES`; `MARTES`; `MIERCOLES`; `JUEVES`; `VIERNES`; `SABADO`; `DOMINGO`. Solo es válido con repetición `SEMANALMENTE`.  |
+> | `coincidencia`             | opcional    | texto                     | Establece el tipo de coincidencia del día de repetición de la programación, siendo por defecto `NUMERICA`. Solo admite: `NUMERICA`; `SEMANA`; `ULTIMA_SEMANAL`; `ULTIMO_MENSUAL`. Solo es válido con repetición `MENSUALMENTE`.                      |
+> | `duracion`                 | opcional    | texto                     | Establece cuando finaliza la programación, siendo por defecto `SIEMPRE`. Solo admite: `SIEMPRE`; `REPETICION`; `CADUCA`.                                                                                                                             |
+> | `repeticiones`             | opcional    | entero                    | Establece el número de repeticiones con los cuales finaliza la programación. Solo es válido con duracion `REPETICION`.                                                                                                                               |
+> | `caducidad`                | opcional    | fecha                     | Establece la fecha de caducidad de la programación. Solo es válido con duracion `CADUCA`.                                                                                                                                                            |
+> | `excepciones`              | opcional    | lista de días             | Días los cuales no se aplicará la programación en la parrilla.                                                                                                                                                                                       |
+> | `omitidos`                 | opcional    | lista de enlaces          | Lista de vídeos que se omiten a incluir en la parrilla.                                                                                                                                                                                              |
 
 #### Códigos de respuesta
 
-> | Código HTTP | Tipo de contenido         | Respuesta                                              |
-> |-------------|---------------------------|--------------------------------------------------------|
-> |    `200`    | ` `                       | texto JSON                                             |
-> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición."}`          |
-> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Programa no encontrado."}` |
+> | Código HTTP | Tipo de contenido         | Respuesta                                                                        |
+> |-------------|---------------------------|----------------------------------------------------------------------------------|
+> |    `200`    | ` `                       | texto JSON                                                                       |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Solicitud incorrecta: Mala petición."}`              |
+> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Solicitud incorrecta: Identificador inexistente."}`  |
 
 ##### Respuesta 200
 
@@ -272,7 +273,12 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 	"orden": "DESCENDENTE",
 	"repetir": "NUNCA",
 	"repetir_cada": 0,
-	"dias_de_la_semana": ["L","X","V","S"],
+	"dias_de_la_semana": [
+      "LUNES",
+      "MIERCOLES",
+      "VIERNES",
+      "SABADO"
+    ],
 	"coincidencia": "NUMERICA",
 	"duracion": "SIEMPRE",
 	"repeticiones": 0,
@@ -299,17 +305,17 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 
 #### Parámetros
 
-> | nombre            |  tipo     | tipo de dato      | descripcion                         |
-> |-------------------|-----------|----------------|-------------------------------------|
-> | `id` |  obligatorio | entero   | Identificador del programa.        |
+> | Nombre | Requisito   | Tipo de dato | Descripcion                 |
+> |--------|-------------|--------------|-----------------------------|
+> | `id`   | obligatorio | entero       | Identificador del programa. |
 
 #### Códigos de respuesta
 
-> | Código HTTP | Tipo de contenido         | Respuesta                                              |
-> |-------------|---------------------------|--------------------------------------------------------|
-> |    `200`    | ` `                       | texto JSON                                             |
-> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición."}`          |
-> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Programa no encontrado."}` |
+> | Código HTTP | Tipo de contenido         | Respuesta                                                                      |
+> |-------------|---------------------------|--------------------------------------------------------------------------------|
+> |    `200`    | ` `                       | texto JSON                                                                     |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Solicitud incorrecta: Mala petición."}`            |
+> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Solicitud incorrecta: Identificador inexistente."}`|
 
 ##### Respuesta 200
 
@@ -322,7 +328,12 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 	"orden": "DESCENDENTE",
 	"repetir": "NUNCA",
 	"repetir_cada": 0,
-	"dias_de_la_semana": ["L","X","V","S"],
+	"dias_de_la_semana": [
+      "LUNES",
+      "MIERCOLES",
+      "VIERNES",
+      "SABADO"
+    ],
 	"coincidencia": "NUMERICA",
 	"duracion": "SIEMPRE",
 	"repeticiones": 0,
@@ -351,17 +362,17 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 
 #### Parámetros
 
-> | nombre            |  tipo     | tipo de dato      | descripcion                         |
-> |-------------------|-----------|----------------|-------------------------------------|
-> | `id` |  obligatorio | entero   | Identificador del programa.        |
+> | Nombre | Requisito   | Tipo de dato | Descripcion                 |
+> |--------|-------------|--------------|-----------------------------|
+> | `id`   | obligatorio | entero       | Identificador del programa. |
 
 #### Códigos de respuesta
 
-> | Código HTTP | Tipo de contenido         | Respuesta                                              |
-> |-------------|---------------------------|--------------------------------------------------------|
-> |    `200`    | ` `                       | texto JSON                                             |
-> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición."}`          |
-> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Programa no encontrado."}` |
+> | Código HTTP | Tipo de contenido         | Respuesta                                                                       |
+> |-------------|---------------------------|---------------------------------------------------------------------------------|
+> |    `200`    | ` `                       | texto JSON                                                                      |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Solicitud incorrecta: Mala petición."}`             |
+> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Solicitud incorrecta: Identificador inexistente."}` |
 
 ##### Respuesta 200
 
@@ -374,7 +385,12 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 	"orden": "DESCENDENTE",
 	"repetir": "NUNCA",
 	"repetir_cada": 0,
-	"dias_de_la_semana": ["L","X","V","S"],
+	"dias_de_la_semana": [
+      "LUNES",
+      "MIERCOLES",
+      "VIERNES",
+      "SABADO"
+    ],
 	"coincidencia": "NUMERICA",
 	"duracion": "SIEMPRE",
 	"repeticiones": 0,
@@ -401,36 +417,36 @@ Los programas son los encargados de asignar vídeos en la parrilla en el día y 
 
 #### Parámetros
 
-> | nombre            |  tipo     | tipo de dato      | descripcion                         |
-> |-------------------|-----------|----------------|-------------------------------------|
-> | `id` |  obligatorio | entero   | Identificador del programa.        |
+> | Nombre | Requisito   | Tipo de datoS | Descripcion                 |
+> |--------|-------------|---------------|-----------------------------|
+> | `id`   | obligatorio | entero        | Identificador del programa. |
 
 #### Códigos de respuesta
 
-> | Código HTTP | Tipo de contenido         | Respuesta                                              |
-> |-------------|---------------------------|--------------------------------------------------------|
-> |    `200`    | ` `                       | texto JSON                                             |
-> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Mala petición."}`          |
-> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Programa no encontrado."}` |
+> | Código HTTP | Tipo de contenido         | Respuesta                                                                       |
+> |-------------|---------------------------|---------------------------------------------------------------------------------|
+> |    `200`    | ` `                       | texto JSON                                                                      |
+> |    `400`    | `text/json;charset=UTF-8` | `{"codigo":"400","mensaje":"Solicitud incorrecta: Mala petición."}`             |
+> |    `404`    | `text/json;charset=UTF-8` | `{"codigo":"404","mensaje":"Solicitud incorrecta: Identificador inexistente."}` |
 
 ##### Respuesta 200
 
 ```json
 {
-	"filtro": [
-		{
-			"fecha_subida": "2024-02-27T18:40:00",
-			"identificador_video": "https://localhost/video1",
-			"miniatura": "https://localhost/miniatura1",
-			"duracion": 1349
-		},
-		{
-			"fecha_subida": "2024-02-27T18:40:00",
-			"identificador_video": "https://localhost/video2",
-			"miniatura": "https://localhost/miniatura2",
-			"duracion": 1388
-		}
-	]
+  "filtro": [
+    {
+      "fecha_subida": "2024-02-27T18:40:00",
+      "identificador_video": "https://localhost/video1",
+      "miniatura": "https://localhost/miniatura1",
+      "duracion": 1349
+    },
+    {
+      "fecha_subida": "2024-02-27T18:40:00",
+      "identificador_video": "https://localhost/video2",
+      "miniatura": "https://localhost/miniatura2",
+      "duracion": 1388
+    }
+  ]
 }
 ```
 
